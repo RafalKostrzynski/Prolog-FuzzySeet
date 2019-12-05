@@ -1,0 +1,70 @@
+r(list):-
+ findall(X,(temperatura(X,T),T>30),list).
+
+
+obiekt(drzewo,1).
+obiekt(malpa,10).
+obiekt(krowa,20).
+obiekt(dom,15).
+obiekt(pies,25).
+obiekt(czlowiek,70).
+obiekt(mieszkanie,65).
+obiekt(schody,80).
+obiekt(listwa,35).
+obiekt(szkola,75).
+
+aLubNieB():-
+
+
+f(X1,Y1,X2,Y2,A,B):-
+    A is (Y1-Y2)/(X1-X2),
+    B is Y1-A*X1.
+
+odleglosc(Metry,Klasa1_przynaleznosc,Klasa2_przynaleznosc,Klasa3_przynaleznosc):-
+    p(Metry,bblisko,Klasa1_przynaleznosc),
+    p(Metry,wpoblizu,Klasa2_przynaleznosc),
+    p(Metry,daleko,Klasa3_przynaleznosc).
+
+p(Metry,bblisko,1):-
+    Metry=<10,
+    Metry>=0.
+p(Metry,bblisko,0):-
+    Metry>=25.
+p(Metry,bblisko,Y):-
+    f(10,1,25,0,A,B),
+    Y is A*Metry+B,
+    Metry>10,
+    Metry<25.
+
+p(Metry,wpoblizu,1):-
+    Metry=35.
+p(Metry,wpoblizu,0):-
+    Metry=<10;
+    Metry>=70.
+p(Metry,wpoblizu,Y):-
+    f(10,0,35,1,A,B),
+    Y is A*Metry+B,
+    Metry>10,
+    Metry<35.
+p(Metry,wpoblizu,Y):-
+    f(35,1,70,0,A,B),
+    Y is A*Metry+B,
+    Metry>35,
+    Metry<70.
+
+p(Metry,daleko,1):-
+    Metry>=65.
+p(Metry,daleko,0):-
+    Metry=<50.
+p(M,daleko,Y):-
+    f(50,0,65,1,A,B),
+    Y is A*M+B,
+    M>50,
+    M<65.
+
+
+
+
+
+
+
